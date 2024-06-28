@@ -12,6 +12,6 @@ class UserAccess
             return $next($request);
         }
 
-        abort(403, 'Bu sayfaya erişim izniniz yok.'); // veya view döndürebilirsiniz
+        abort(403, 'Bu sayfaya erişim izniniz yok.'); 
     }
 }

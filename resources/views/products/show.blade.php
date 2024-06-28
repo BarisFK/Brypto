@@ -3,33 +3,33 @@
 @section('title', 'Show Product')
  
 @section('contents')
-<h1 class="font-bold text-2xl ml-3">Detail Product</h1>
+<h1 class="font-bold text-2xl ml-3">User Detail</h1>
 <hr />
 <div class="border-b border-gray-900/10 pb-12">
     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
         <div class="sm:col-span-4">
-            <label class="block text-sm font-medium leading-6 text-gray-900">Title</label>
+            <label class="block text-sm font-medium leading-6 text-gray-900">name</label>
             <div class="mt-2">
-                {{ $product->title }}
+                {{ $user->name }}
             </div>
         </div>
  
         <div class="sm:col-span-4">
-            <label class="block text-sm font-medium leading-6 text-gray-900">Price</label>
+            <label class="block text-sm font-medium leading-6 text-gray-900">Email</label>
             <div class="mt-2">
-                {{ $product->price }}
+                {{ $user->email }}
             </div>
         </div>
         <div class="sm:col-span-4">
-            <label class="block text-sm font-medium leading-6 text-gray-900">Product Code</label>
+            <label class="block text-sm font-medium leading-6 text-gray-900">Password</label>
             <div class="mt-2">
-                {{ $product->product_code }}
+                {{ $user->password }}
             </div>
         </div>
         <div class="sm:col-span-4">
-            <label class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+            <label class="block text-sm font-medium leading-6 text-gray-900">Type</label>
             <div class="mt-2">
-                {{ $product->description }}
+                {{ $user->type }}
             </div>
         </div>
         </form>

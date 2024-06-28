@@ -54,13 +54,14 @@ class AuthController extends Controller
  
         $request->session()->regenerate(); #Başarılı giriş olursa oturum kimliği yenilenir. Bu saldırılarılara karşı bir güvenlik önlemidir.
  
-        if (auth()->user()->type == 'admin') {
-            return redirect()->route('admin/home'); #admin ise bu rota kullanılır
-        } else {
-            return redirect()->route('home'); #normal kullanıcı ise bu rota kullanılır
-        }
+       /**
+        * if (auth()->user()->type == 'admin') {
+        *    return redirect()->route('admin/home'); #admin ise bu rota kullanılır
+        *} else {
+         *   return redirect()->route('home'); #normal kullanıcı ise bu rota kullanılır
+        *} */
          
-        return redirect()->route('dashboard');
+        return redirect()->route('admin/home');
     }
  
     public function logout(Request $request)

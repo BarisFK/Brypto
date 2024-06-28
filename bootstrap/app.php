@@ -17,7 +17,7 @@ $app = Application::configure(basePath: dirname(__DIR__))
         // İstisna (exception) konfigürasyonları burada
     })->create();
 
-// Uygulama oluşturulduktan sonra middleware'ı tanımlayın
-$app->router->aliasMiddleware('user-access', \App\Http\Middleware\UserAccess::class);
+    // Uygulama oluşturulduktan sonra middleware'ı tanımlayın
+    $app->router->aliasMiddleware('user-access', \App\Http\Middleware\UserAccess::class);
 
 return $app;

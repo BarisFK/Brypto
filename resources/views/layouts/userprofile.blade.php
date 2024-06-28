@@ -24,8 +24,5 @@
         </label>
         <input name="email" type="text" value="{{ auth()->user()->email }}" class="w-full input input-bordered" />
     </div>
-    <div class="mt-6">
-        <button type="submit" class="btn btn-block">Save Profile</button>
-    </div>
 </form>
 @endsection
