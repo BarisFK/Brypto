@@ -17,12 +17,13 @@
     <header class="px-4 py-2 shadow ">
         <div class="flex justify-between">
             <div class="flex items-center">
-                <div class="text-blue font-bold text-2xl md:text-3xl">
-                    <i class="bi bi-app-indicator px-2 py-1 rounded-md bg-blue-600"></i>
-                    Brypto
-                </div>
-                <button data-search class="p-4 md:hidden focus:outline-none" type="button">
-                </button>
+                <div class="text-green-500 font-bold text-2xl md:text-3xl flex items-center">
+                    <div class="flex items-center justify-center bg-green-500 rounded-md"> 
+                        <i class="bi bi-shield-lock text-white px-2 py-1"></i>
+                    </div>
+                    <span class="ml-2">Brypto</span> 
+                 </div>
+                <button data-search class="p-4 md:hidden focus:outline-none" type="button"></button>
             </div>
             <div class="flex items-center">
                 <button data-messages class="p-3 mr-2 focus:outline-none hover:bg-gray-200 hover:rounded-md" type="button">
@@ -36,46 +37,50 @@
                         <path style="fill: red;" d="M469.344 106.668c0 58.91-47.754 106.664-106.668 106.664-58.91 0-106.664-47.754-106.664-106.664C256.012 47.758 303.766 0 362.676 0c58.914 0 106.668 47.758 106.668 106.668zm0 0" />
                     </svg>
                 </button>
-                <button data-dropdown class="flex items-center px-3 py-2 focus:outline-none hover:bg-gray-200 hover:rounded-md" type="button" x-data="{ open: false }" @click="open = true" :class="{ 'bg-gray-200 rounded-md': open }">
-                    <img src="" alt="Profile" class="h-8 w-8 rounded-full">
-                    <span class="ml-4 text-sm hidden md:inline-block">Cairocoders</span>
-                    <svg class="fill-current w-3 ml-4" viewBox="0 0 407.437 407.437">
-                        <path d="M386.258 91.567l-182.54 181.945L21.179 91.567 0 112.815 203.718 315.87l203.719-203.055z" />
-                    </svg>
-                    <div data-dropdown-items class="text-sm text-left absolute top-0 right-0 mt-16 mr-4 bg-white rounded border border-gray-400 shadow" x-show="open" @click.away="open = false">
-                        <ul>
-                            <li class="px-4 py-3 border-b hover:bg-gray-200"><a href="#">My Profile</a></li>
-                            <li class="px-4 py-3 border-b hover:bg-gray-200"><a href="#">Settings</a></li>
-                            <li class="px-4 py-3 hover:bg-gray-200"><a href="{{ route('logout') }}">Log out</a></li>
-                        </ul>
-                    </div>
-                </button>
+            <button data-dropdown class="flex items-center px-3 py-2 focus:outline-none hover:bg-gray-200 hover:rounded-md relative" type="button" x-data="{ open: false }" @click="open = true" :class="{ 'bg-gray-200 rounded-md': open }">
+                    <i class="bi bi-person-circle text-3xl"></i>  
+
+                     <div data-dropdown-items class="text-base text-left absolute top-0 right-0 mt-16 w-48 bg-white rounded-lg shadow-md overflow-hidden" x-show="open" @click.away="open = false">
+                            <div class="flex flex-col items-center py-4"> 
+                <i class="bi bi-person-circle text-6xl mb-2"></i> 
+                 <span class="text-lg font-semibold">{{ auth()->user()->name }}</span> 
+                <span class="text-sm text-gray-500 mt-1 mb-2">{{ auth()->user()->email }}</span>
+                    <a href="{{ route('admin/profile') }}" class="mt-2 mb-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                     View Profile
+                    </a>
+                         </div>
+                     </div>
+            </button>
+
+
+
+
  
             </div>
         </div>
     </header>
  
     <div class="flex flex-row">
-        <div class="flex flex-col w-64 h-screen overflow-y-auto bg-gray-900 border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
-            <div class="sidebar text-center bg-gray-900">
-                <div class="text-gray-100 text-xl ">
-                    <div class="p-2.5 mt-1 flex items-center">
-                        <h1 class=" text-gray-300 text-[12px] ml-3">Welcome {{auth()->user()->name}}!</h1>
-                    </div>
+        <div class="flex flex-col w-64 h-screen overflow-y-auto bg-gray-800 border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 rounded-r-lg">
+            <div class="sidebar text-center bg-gray-800">
+                <div class="text-gray-100 text-xl text-center">
+                 <div class="p-2.5 mt-1 flex items-center justify-center"> 
+                  <h1 class="text-gray-300 text-[12px]">Welcome {{ auth()->user()->name }}!</h1>
                 </div>
-                <div class="p-1.5 my-4 mx-2 flex items-center rounded-md px-15 duration-300 cursor-pointer bg-gray-700 text-white">
+            </div>
+                <div class="p-2.5 my-4 mx-1.5 flex items-center rounded-md px-15 duration-300 cursor-pointer bg-gray-700 text-white">
                 <i class="bi bi-search text-sm"></i>
                 <input type="text" placeholder="Search" class="text-[15px] ml-4 w-full bg-transparent focus:outline-none placeholder-gray-300" />
                 </div>
                 <a href="{{ route('admin/home') }}">
-                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white">
                         <i class="bi bi-house-door-fill"></i>
                         <span class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
                     </div>
                 </a>
                
                 <a href="{{ route('admin/profile') }}">
-                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white">
                     <i class="bi bi-person-circle"></i> 
                     <span class="text-[15px] ml-4 text-gray-200 font-bold">Profile</span>
                     </div>
@@ -83,23 +88,40 @@
                 @if (auth()->check())
                 @if (auth()->user()->type === 'admin')
                 <a href="{{ route('users.index') }}">
-                <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-                    <i class="bi bi-bookmark-fill"></i>
+                <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white">
+                    <i class="bi bi-people"></i>
                     <span class="text-[15px] ml-4 text-gray-200 font-bold">Users</span>
                 </div>
 
                 </a>
-                 <a href="{{ route('filepage') }}">
-                <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-                    <i class="bi bi-file-earmark-check-fill"></i>
-                    <span class="text-[15px] ml-4 text-gray-200 font-bold">File Upload</span>
-                </div>
-                 </a>
+                
+                <div x-data="{ isOpen: false }"> 
+                <button @click="isOpen = !isOpen" class="p-2.5 mt-3 flex items-center justify-between rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white w-full">
+                    <div class="flex items-center">
+                        <i class="bi bi-journal-x"></i>
+                        <span class="text-[15px] ml-4 text-gray-200 font-bold">X-Files</span>
+                    </div>
+                    <i :class="{'bi bi-chevron-down': !isOpen, 'bi bi-chevron-up': isOpen}" class="text-sm"></i> 
+                </button>
+            
+                <div x-show="isOpen" class="mt-2 space-y-2">
+    <a href="{{ route('filepage') }}" class="block text-gray-200 hover:bg-green-500 hover:text-white ml-5 p-2 rounded-md flex items-center"> 
+        <i class="bi bi-lock mr-2"></i>  
+        Encryption
+    </a>
+    <a href="{{ route('filepage') }}" class="block text-gray-200 hover:bg-green-500 hover:text-white ml-5 p-2 rounded-md flex items-center">
+        <i class="bi bi-key mr-2"></i>   
+        Decryption
+    </a>
+</div>
+
+            </div>
+
         @endif
     @endif
                 <a href="{{ route('logout') }}">
                     <div class="my-4 bg-gray-600 h-[1px]"></div>
-                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-red-500 text-white">
                         <i class="bi bi-box-arrow-in-right"></i>
                         <span class="text-[15px] ml-4 text-gray-200 font-bold">Logout</span>
                     </div>

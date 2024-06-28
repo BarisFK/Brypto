@@ -22,14 +22,14 @@
         </div>
 
         <div>
-            <label for="key" class="block text-sm font-medium text-gray-700">Encryption Key (Base64):</label>
+            <label for="key" class="block text-sm font-medium text-gray-700">Decryption Key (Base64):</label>
             <input type="text" name="key" id="key" value="{{ old('key') }}" placeholder="Enter base64 encoded key"
                 class="w-full p-2 border rounded-md">
         </div>
         <!-- old() populates the field with the previously entered key value even after a page refresh.-->
 
         <button type="submit" name="submit"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Decrypt and Display</button>
+            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Decrypt and Display</button>
     </div>
 </form>
 
