@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Upload File')
+@section('title', 'Decryption')
 
 @section('contents')
 
@@ -12,8 +12,7 @@
         </ul>
     </div>
 @endif
-
-<form method="POST" enctype="multipart/form-data" action="{{ route('fileupload') }}">
+<form method="POST" enctype="multipart/form-data" action="{{ route('decryption') }}">
     @csrf
     <div class="flex flex-col space-y-4">
         <div class="file-upload-area p-4 border-2 border-dashed border-gray-300 rounded-md">

@@ -36,7 +36,7 @@ Route::controller(AuthController::class)->group(function () {
 
 
 //Admin için rotalar
-Route::middleware(['auth','user-access:admin'])->group(function () {
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin/home');
 
     Route::get('/admin/profile', [AdminController::class, 'profilepage'])->name('admin/profile');
@@ -50,14 +50,18 @@ Route::middleware(['auth','user-access:admin'])->group(function () {
     Route::put('/admin/users/update/{id}', [AdminController::class, 'update'])->name('admin.update');
     Route::delete('/admin/users/destroy/{id}', [AdminController::class, 'destroy'])->name('admin/products/destroy');
 
-    Route::get('/admin/file', [AdminController::class, 'file'])->name('filepage');
-    Route::post('/admin/fileupload', [AdminController::class, 'upload'])->name('fileupload');
+    Route::get('/admin/file', [AdminController::class, 'decryptPage'])->name('decryptPage');
+    Route::post('/admin/fileupload', [AdminController::class, 'decryption'])->name('decryption');
     Route::post('/admin/read-txt', [AdminController::class, 'readTxtFile'])->name('read.txt');
+
+    Route::get('/admin/encrypt', [AdminController::class, 'encryptPage'])->name('encryptPage');
+    Route::post('/admin/encrypt', [AdminController::class, 'encryption'])->name('encryption'); 
+
 
 });
 
 //Normal kullancılar için rotalar
-Route::middleware(['auth','user-access:user'])->group(function () {
+Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::middleware(['user-access:user'])->get('/profile', [AdminController::class, 'userProfile'])->name('profile');
 });
 

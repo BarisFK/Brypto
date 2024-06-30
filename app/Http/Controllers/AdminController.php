@@ -133,12 +133,12 @@ class AdminController extends Controller
         return redirect()->route('users.index')->with('success', ' User deleted');
     }
 
-    public function file()
+    public function decryptPage()
     {
         return view('file');
     }
 
-    public function upload(Request $request)
+    public function decryption(Request $request)
     {
         $request->validate([
             'file' => 'required|file|mimes:txt', //Get txt file
@@ -149,19 +149,19 @@ class AdminController extends Controller
         $key = $request->input('key');
         $encryptionKey = base64_decode($key); //Decode the key 
 
-    // dd($encryptionKey.'////'.$key);
+        // dd($encryptionKey.'////'.$key);
 
         try {
             $encryptedData = file_get_contents($file->getRealPath()); // Read data from the file
 
-    // dd($file->getRealPath());
+            // dd($file->getRealPath());
 
             list($encryptedData, $iv, $tag) = explode('::', base64_decode($encryptedData), 3);
             $decryptedData = openssl_decrypt($encryptedData, 'aes-256-gcm', $encryptionKey, 0, $iv, $tag);
-            
-    //dd($encryptedData.'    '.$iv.'    '.$tag);
-    //dd($decryptedData);
-    
+
+            //dd($encryptedData.'    '.$iv.'    '.$tag);
+            //dd($decryptedData);
+
             if ($decryptedData === false) {
 
                 return back()->with('decryptionError', "Invalid Key or Corrupted Data")
@@ -173,7 +173,7 @@ class AdminController extends Controller
 
 
             $backupFilePath = $originalFilePath . '.bak'; // Create a backup 
-    //dd($backupFilePath);
+            //dd($backupFilePath);
             copy($originalFilePath, $backupFilePath);
 
             session(['originalFilePath' => $file->getRealPath()]); // Store in session
@@ -183,5 +183,38 @@ class AdminController extends Controller
             return back()->with('decryptionError', 'Error decrypting file. Details: ' . $e->getMessage());
         }
     }
+
+    public function encryptPage()
+    {
+        return view('file2');
+    }
+
+    public function encryption(Request $request)
+    {
+        $validatedData = $request->validate([
+            'message' => 'required',
+            'key' => 'required',
+        ]);
+
+        $message = $request->input('message');
+        $key = $request->input('key');
+        $encryptedData = $this->encryptMessage($message, $key);
+
+        //dd($encryptedData);
+
+        return back()->with('encryptedData', $encryptedData)
+            ->withInput();
+    }
+    private function encryptMessage($message, $key)
+    {
+        $encryptionKey = base64_decode($key);
+        $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-gcm'));
+        $tag = null;
+
+        $ciphertext = openssl_encrypt($message, 'aes-256-gcm', $encryptionKey, 0, $iv, $tag);
+
+        return base64_encode($ciphertext . '::' . $iv . '::' . $tag);
+    }
+
 
 }

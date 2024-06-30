@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <header class="px-4 py-2 shadow ">
+    <header class="px-4 py-2 shadow-md">
         <div class="flex justify-between">
             <div class="flex items-center">
                 <div class="text-green-500 font-bold text-2xl md:text-3xl flex items-center">
@@ -61,7 +61,7 @@
     </header>
  
     <div class="flex flex-row">
-        <div class="flex flex-col w-64 h-screen overflow-y-auto bg-gray-800 border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 rounded-r-lg">
+        <div class="flex flex-col w-64 h-screen overflow-y-auto bg-gray-800 border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 rounded-r-md">
             <div class="sidebar text-center bg-gray-800">
                 <div class="text-gray-100 text-xl text-center">
                  <div class="p-2.5 mt-1 flex items-center justify-center"> 
@@ -104,12 +104,12 @@
                     <i :class="{'bi bi-chevron-down': !isOpen, 'bi bi-chevron-up': isOpen}" class="text-sm"></i> 
                 </button>
             
-                <div x-show="isOpen" class="mt-2 space-y-2">
-    <a href="{{ route('filepage') }}" class="block text-gray-200 hover:bg-green-500 hover:text-white ml-5 p-2 rounded-md flex items-center"> 
+                <div x-show="isOpen" class="mt-2 space-y-2 bg-gray-700">
+    <a href="{{ route('encryptPage') }}" class="block text-gray-200 hover:bg-green-600 hover:text-white ml-5 p-2 rounded-lg flex items-center"> 
         <i class="bi bi-lock mr-2"></i>  
         Encryption
     </a>
-    <a href="{{ route('filepage') }}" class="block text-gray-200 hover:bg-green-500 hover:text-white ml-5 p-2 rounded-md flex items-center">
+    <a href="{{ route('decryptPage') }}" class="block text-gray-200 hover:bg-green-600 hover:text-white ml-5 p-2 rounded-lg flex items-center">
         <i class="bi bi-key mr-2"></i>   
         Decryption
     </a>
@@ -128,8 +128,9 @@
                 </a>
             </div>
         </div>
-        <div class="flex flex-col w-full h-screen px-4 py-8 mt-10">
-            <div>@yield('contents')</div>
+        <div class="flex flex-col w-full h-screen px-4 py-8">
+        <h1 class="mb-10 font-bold text-2xl ">@yield('title')</h1>
+        <div>@yield('contents')</div>
         </div>
     </div>
 </body>
