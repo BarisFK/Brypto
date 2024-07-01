@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\XfilesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
@@ -41,21 +42,29 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     Route::get('/admin/profile', [AdminController::class, 'profilepage'])->name('admin/profile');
 
+    //Add users
     Route::get('/admin/users', [AdminController::class, 'index'])->name('users.index');
     Route::get('/admin/users/create', [AdminController::class, 'create'])->name('users.create');
     Route::post('/admin/users/store', [AdminController::class, 'store'])->name('users.store');
 
+    //Users 
     Route::get('/admin/users/show/{id}', [AdminController::class, 'show'])->name('admin/products/show');
     Route::get('/admin/users/edit/{id}', [AdminController::class, 'edit'])->name('admin/products/edit');
     Route::put('/admin/users/update/{id}', [AdminController::class, 'update'])->name('admin.update');
     Route::delete('/admin/users/destroy/{id}', [AdminController::class, 'destroy'])->name('admin/products/destroy');
 
-    Route::get('/admin/file', [AdminController::class, 'decryptPage'])->name('decryptPage');
-    Route::post('/admin/fileupload', [AdminController::class, 'decryption'])->name('decryption');
-    Route::post('/admin/read-txt', [AdminController::class, 'readTxtFile'])->name('read.txt');
 
-    Route::get('/admin/encrypt', [AdminController::class, 'encryptPage'])->name('encryptPage');
-    Route::post('/admin/encrypt', [AdminController::class, 'encryption'])->name('encryption'); 
+    // X-files 
+    Route::get('/admin/file', [XfilesController::class, 'decryptPage'])->name('decryptPage');
+    Route::post('/admin/fileupload', [XfilesController::class, 'decryption'])->name('decryption');
+    Route::post('/admin/read-txt', [XfilesController::class, 'readTxtFile'])->name('read.txt');
+    Route::get('/admin/encrypt', [XfilesController::class, 'encryptPage'])->name('encryptPage');
+    Route::post('/admin/encrypt', [XfilesController::class, 'encryption'])->name('encryption'); 
+    Route::get('/admin/vault', [XfilesController::class, 'vaultPage'])->name('vaultPage');
+
+    Route::get('/admin/cards', [AdminController::class, 'cardsPage'])->name('cardsPage');
+
+
 
 
 });
