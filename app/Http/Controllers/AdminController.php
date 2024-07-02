@@ -134,8 +134,5 @@ class AdminController extends Controller
     }
 
 
-    public function cardsPage()
-    {
-        return view('cards');
-    }
+   
 }
