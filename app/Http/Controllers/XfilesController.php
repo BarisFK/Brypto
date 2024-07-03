@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class XfilesController extends Controller
+class XFilesController extends Controller
 {
     
     public function decryptPage()
@@ -75,7 +75,7 @@ class XfilesController extends Controller
         return back()->with('encryptedData', $encryptedData);
     }
 
-    private function encryptMessage($message, $key)
+    public function encryptMessage($message, $key)
     {
         $encryptionKey = base64_decode($key);
         $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-gcm'));

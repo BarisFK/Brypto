@@ -10,7 +10,9 @@
     <title>@yield('title')</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
 </head>
 
 <body>
@@ -105,7 +107,7 @@
                 </div>
                 </a>
 
-                <a href="{{ route('admin/home') }}">
+                <a href="{{ route('passPage') }}">
                     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white">
                         <i class="bi bi-file-lock"></i>
                         <span class="text-[15px] ml-4 text-gray-200 font-bold">Passwords</span>

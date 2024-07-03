@@ -29,8 +29,21 @@ class CardsController extends Controller
 
         Cards::create($validatedData);
 
-        return redirect()->route('cardsPage')->with('success', 'Kart başarıyla eklendi!');
+        return redirect()->route('cardsPage')->with('success', 'Card Added!');
     }
 
+    public function delete($id)
+    {
+        // Find Card
+        $card = Cards::find($id);
+        
+        if (!$card) {
+            return redirect()->back()->with('error', 'Card not found!');
+        }
 
+        //Delete Card
+        $card->delete();
+
+        return redirect()->back()->with('success', 'Card deleted successfully!'); 
+    }
 }

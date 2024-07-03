@@ -18,11 +18,17 @@
         <div
             class="bg-gradient-to-r from-green-400 to-green-800 text-white p-4 rounded-lg shadow-lg flex flex-col items-start justify-between h-48 w-96 relative">
 
-            {{-- Eye Icon --}}
-            <button class="absolute top-2 right-2 text-white hover:text-gray-300 focus:outline-none"
-                onclick="toggleCardNumber('{{ $card->id }}')">
-                <i class="bi bi-eye"></i>
-            </button>
+            <div class="absolute top-2 right-2 flex space-x-2"> {{-- Icons container --}}
+                <button class="text-white hover:text-gray-300 focus:outline-none"
+                    onclick="toggleCardNumber('{{ $card->id }}')">
+                    <i class="bi bi-eye"></i>
+                </button>
+
+                <button class="text-white hover:text-red-500 focus:outline-none"
+                    onclick="confirmDelete('{{ $card->id }}', '{{ route('cardsDelete', $card->id) }}')">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
 
             <i class="bi bi-bank"></i>
 
@@ -31,11 +37,8 @@
                     <span class="font-mono text-lg tracking-widest" id="card-number-{{ $card->id }}">
                         {{ Str::mask($card->card_no, '*', 4, 12) }}
                     </span>
-
-                    {{-- Copy Icon --}}
                     <button class="ml-2 bi bi-clipboard text-white hover:text-gray-300 hidden"
-                        id="copy-icon-{{ $card->id }}" onclick="copyCardNumber('{{ $card->card_no }}')">
-                    </button>
+                        id="copy-icon-{{ $card->id }}" onclick="copyCardNumber('{{ $card->card_no }}')"></button>
                 </div>
 
                 <div class="ml-auto">
@@ -43,7 +46,6 @@
                     <span>{{ Str::mask($card->card_cvv, '*', 1, 2) }}</span>
                 </div>
             </div>
-
 
             <div class="flex justify-between w-full mt-4 text-sm">
                 <div>
@@ -56,39 +58,75 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            function toggleCardNumber(cardId) {
-                const cardNumberSpan = document.getElementById(`card-number-${cardId}`);
-                const copyIcon = document.getElementById(`copy-icon-${cardId}`);
-                const isMasked = cardNumberSpan.textContent.includes('*');
-
-                if (isMasked) {
-                    // Show the card number
-                    @foreach ($cards as $c)
-                        if ('{{ $c->id }}' === cardId) {
-                            cardNumberSpan.textContent = '{{ $c->card_no }}';
-                        }
-                    @endforeach
-                    copyIcon.classList.remove('hidden');
-                } else {
-                    // Mask the card number
-                    @foreach ($cards as $c)
-                        if ('{{ $c->id }}' === cardId) {
-                            cardNumberSpan.textContent = '{{ Str::mask($c->card_no, '*', 4, 12) }}';
-                        }
-                    @endforeach
-                    copyIcon.classList.add('hidden');
-                }
-            }
-
-            function copyCardNumber(cardNumber) {
-                navigator.clipboard.writeText(cardNumber).then(() => {
-                    alert('Card number copied!');
-                });
-            }
-        </script>
+        <form id="delete-form-{{ $card->id }}" action="{{ route('cardsDelete', $card->id) }}" method="POST"
+            style="display: none;">
+            @csrf
+            @method('DELETE')
+        </form>
     @endforeach
+    <script>
+        function toggleCardNumber(cardId) {
+            const cardNumberSpan = document.getElementById(`card-number-${cardId}`);
+            const copyIcon = document.getElementById(`copy-icon-${cardId}`);
+            const isMasked = cardNumberSpan.textContent.includes('*');
+
+            if (isMasked) {
+                // Show the card number
+                @foreach ($cards as $c)
+                    if ('{{ $c->id }}' === cardId) {
+                        cardNumberSpan.textContent = '{{ $c->card_no }}';
+                    }
+                @endforeach
+                copyIcon.classList.remove('hidden');
+            } else {
+                // Mask the card number
+                @foreach ($cards as $c)
+                    if ('{{ $c->id }}' === cardId) {
+                        cardNumberSpan.textContent = '{{ Str::mask($c->card_no, '*', 4, 12) }}';
+                    }
+                @endforeach
+                copyIcon.classList.add('hidden');
+            }
+        }
+
+        function copyCardNumber(cardNumber) {
+            navigator.clipboard.writeText(cardNumber).then(() => {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Card number copied!',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                });
+            });
+        }
+        function confirmDelete(cardId, deleteUrl) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {// Submit the delete form
+                    document.getElementById(`delete-form-${cardId}`).submit();
+                    Swal.fire({
+                    toast: true,
+                    position: 'bottom-start',
+                    icon: 'success',
+                    title: 'Card deleted!',
+                    showConfirmButton: false,
+                    timer: 4000,
+                    timerProgressBar: true,
+                });
+                }
+            });
+        }
+    </script>
 
 
     <div class="bg-green-500 hover:bg-green-400 text-white p-6 rounded-lg flex items-center justify-center text-5xl font-semibold h-48 w-96 cursor-pointer"

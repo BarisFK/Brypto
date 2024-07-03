@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CardsController;
+use App\Http\Controllers\PassController;
 use App\Http\Controllers\XfilesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -63,8 +64,17 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/encrypt', [XfilesController::class, 'encryption'])->name('encryption'); 
     Route::get('/admin/vault', [XfilesController::class, 'vaultPage'])->name('vaultPage');
 
+    //Cards
     Route::get('/admin/cards', [CardsController::class, 'cardsPage'])->name('cardsPage');
-    Route::post('/admin/cards', [CardsController::class, 'store'])->name('cardsAdd');
+    Route::post('/admin/cards/add', [CardsController::class, 'store'])->name('cardsAdd');
+    Route::delete('/cards/delete/{id}', [CardsController::class, 'delete'])->name('cardsDelete');
+
+    //Passwords
+    Route::get('/admin/passwords', [PassController::class, 'passPage'])->name('passPage');
+    Route::post('/admin/passwords/add', [PassController::class, 'store'])->name('passAdd');
+    Route::delete('/passwords/delete/{id}', [CardsController::class, 'delete'])->name('cardsDelete');
+
+
 
 
 
