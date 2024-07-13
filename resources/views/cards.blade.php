@@ -16,7 +16,7 @@
 <div class="grid grid-cols-3 gap-4">
     @foreach ($cards as $card)
         <div
-            class="bg-gradient-to-r from-green-400 to-green-800 text-white p-4 rounded-lg shadow-lg flex flex-col items-start justify-between h-48 w-96 relative">
+            class="bg-gradient-to-r from-green-400 to-green-800 hover:from-green-400 hover:to-green-600 text-white p-4 rounded-lg shadow-lg flex flex-col items-start justify-between h-48 w-96 relative">
 
             <div class="absolute top-2 right-2 flex space-x-2"> {{-- Icons container --}}
                 <button class="text-white hover:text-gray-300 focus:outline-none"
