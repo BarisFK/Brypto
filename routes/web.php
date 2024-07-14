@@ -3,6 +3,7 @@
 use App\Http\Controllers\CardsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PassController;
+use App\Http\Controllers\VaultController;
 use App\Http\Controllers\XfilesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -33,7 +34,7 @@ Route::controller(AuthController::class)->group(function () {
 
     Route::get('login', 'login')->name('login'); # proje/login , login fonkisyonu ve eylemin ismi
     # bu rota , view dosyasında { route('login') } ile çağırılabilir
-    Route::post('login', 'loginAction')->name('login');
+    Route::post('login', 'loginAction')->name('loginA');
 
     Route::get('logout', 'logout')->middleware('auth')->name('logout');
 });
@@ -64,8 +65,14 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/fileupload', [XfilesController::class, 'decryption'])->name('decryption');
     Route::post('/admin/read-txt', [XfilesController::class, 'readTxtFile'])->name('read.txt');
     Route::get('/admin/encrypt', [XfilesController::class, 'encryptPage'])->name('encryptPage');
-    Route::post('/admin/encrypt', [XfilesController::class, 'encryption'])->name('encryption'); 
-    Route::get('/admin/vault', [XfilesController::class, 'vaultPage'])->name('vaultPage');
+    Route::post('/admin/encrypt', [XfilesController::class, 'encryption'])->name('encryption');
+
+    Route::get('/admin/vault', [VaultController::class, 'vaultPage'])->name('vaultPage');
+    Route::post('/saveToVault', [VaultController::class, 'saveToVault'])->name('saveToVault');
+    Route::post('/decrypt-data', [VaultController::class, 'decryptVault'])->name('decryptVault');
+    Route::delete('/vault/{id}', [VaultController::class, 'deleteVaultData'])->name('deleteVaultData');
+
+
 
     //Cards
     Route::get('/admin/cards', [CardsController::class, 'cardsPage'])->name('cardsPage');

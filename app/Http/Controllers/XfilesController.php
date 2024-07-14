@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 
 class XFilesController extends Controller
 {
-    
+
     public function decryptPage()
     {
         return view('xfiles/decryption');
     }
 
+    public function encryptPage()
+    {
+        return view('xfiles/encryption');
+    }
     public function decryption(Request $request)
     {
         $request->validate([
@@ -58,11 +62,6 @@ class XFilesController extends Controller
         }
     }
 
-    public function encryptPage()
-    {
-        return view('xfiles/encryption');
-    }
-
     public function encryption(Request $request)
     {
         $validatedData = $request->validate([
@@ -86,8 +85,4 @@ class XFilesController extends Controller
         return base64_encode($ciphertext . '::' . $iv . '::' . $tag);
     }
 
-    public function vaultPage()
-    {
-        return view('xfiles/vault');
-    }
 }
