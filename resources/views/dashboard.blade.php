@@ -9,7 +9,14 @@
         <div>
             <h2 class="text-xl font-semibold mb-2">Card Statistics</h2>
             <p class="text-lg">Total Cards: {{ $totalCards }}</p>
-            <p class="text-sm">Last Added Card: {{ $lastCreatedCard['title'] }}</p>
+            
+            {{-- Conditionally Display Last Added Card --}}
+            @if ($lastCreatedCard) 
+                <p class="text-sm">Last Added Card: {{ $lastCreatedCard->title }}</p> 
+            @else
+                <p class="text-sm">Last Added Card: None</p> 
+            @endif
+
             <p class="text-sm">Expiring Soon: {{ $expiringSoon }}</p>
         </div>
         <div class="mt-4">

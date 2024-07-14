@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('card_owner');
             $table->integer('card_no');
             $table->integer('card_cvv');
-            $table->integer('valid_thru');
+            $table->integer('expiry_month');
+            $table->integer('expiry_year');
             $table->timestamps();
         });
     }

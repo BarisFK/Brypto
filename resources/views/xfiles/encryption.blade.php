@@ -35,7 +35,34 @@
     <div class="mt-4 p-4 bg-green-100 border border-green-400 rounded-md">
         <h3 class="text-lg font-semibold mb-2">Encrypted Data:</h3>
         <pre>{{ session('encryptedData') }}</pre>
+
+        {{-- Save to Vault Form --}}
+        <form method="POST" action="{{ route('saveToVault') }}" class="mt-4">
+            @csrf
+            <input type="hidden" name="encrypted_data" value="{{ session('encryptedData') }}">
+            <div>
+                <label for="vault_title" class="block text-sm font-medium text-gray-700">Vault Title:</label>
+                <input type="text" name="vault_title" id="vault_title" class="w-full p-2 border rounded-md">
+            </div>
+            <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save to
+                Vault</button>
+        </form>
     </div>
 @endif
 
+@endsection
+
+@section('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (session('success'))
+                Swal.fire({
+                    title: 'Success!',
+                    text: '{{ session('success') }}',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            @endif
+        });
+    </script>
 @endsection
