@@ -61,7 +61,7 @@ class AuthController extends Controller
          *   return redirect()->route('home'); #normal kullanıcı ise bu rota kullanılır
         *} */
          
-        return redirect()->route('admin/home');
+        return redirect()->route('dashboard');
     }
  
     public function logout(Request $request)

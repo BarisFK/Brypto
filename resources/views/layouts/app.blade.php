@@ -62,7 +62,7 @@
 <button data-dropdown class="flex items-center px-3 py-2 focus:outline-none hover:bg-gray-200 hover:rounded-md relative" type="button" x-data="{ open: false }" @click="open = true" :class="{ 'bg-gray-200 rounded-md': open }">
     <i class="bi bi-person-circle text-3xl"></i> 
     
-    <div data-dropdown-items class="text-base text-left absolute top-0 right-0 mt-16 w-48 bg-white rounded-lg shadow-md overflow-hidden" x-show="open" @click.away="open = false">
+    <div data-dropdown-items class="z-10 text-base text-left absolute top-0 right-0 mt-16 w-48 bg-white rounded-lg shadow-md overflow-hidden" x-show="open" @click.away="open = false">
         <div class="flex flex-col items-center py-4"> 
             <i class="bi bi-person-circle text-6xl mb-2"></i> 
             <span class="text-lg font-semibold">{{ auth()->user()->name }}</span> 
@@ -91,10 +91,10 @@
                 <i class="bi bi-search text-sm"></i>
                 <input type="text" placeholder="Search" class="text-[15px] ml-4 w-full bg-transparent focus:outline-none placeholder-gray-300" />
                 </div>
-                <a href="{{ route('admin/home') }}">
+                <a href="{{ route('dashboard') }}">
                     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white">
                         <i class="bi bi-house-door-fill"></i>
-                        <span class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
+                        <span class="text-[15px] ml-4 text-gray-200 font-bold">Dashboard</span>
                     </div>
                 </a>
                

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CardsController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PassController;
 use App\Http\Controllers\XfilesController;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,7 @@ Route::controller(AuthController::class)->group(function () {
 
     Route::get('login', 'login')->name('login'); # proje/login , login fonkisyonu ve eylemin ismi
     # bu rota , view dosyasında { route('login') } ile çağırılabilir
-    Route::post('login', 'loginAction')->name('login.action');
+    Route::post('login', 'loginAction')->name('login');
 
     Route::get('logout', 'logout')->middleware('auth')->name('logout');
 });
@@ -40,7 +41,9 @@ Route::controller(AuthController::class)->group(function () {
 
 //Admin için rotalar
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
-    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin/home');
+
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
+
 
     Route::get('/admin/profile', [AdminController::class, 'profilepage'])->name('admin/profile');
 
@@ -89,6 +92,6 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 
 //Ortak rotalar
 Route::middleware(['auth'])->group(function () { // Hem admin hem user için ortak middleware
-    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin/home');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
     Route::get('/admin/profile', [AdminController::class, 'profilepage'])->name('admin/profile');
 });

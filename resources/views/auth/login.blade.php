@@ -64,7 +64,7 @@
                     <h1 class="text-2xl font-extrabold leading-tight tracking-tight text-green-900 md:text-3xl dark:text-white text-center">
                         Login to your account
                     </h1>
-                    <form class="space-y-6" method="post" action="{{ route('login.action') }}">
+                    <form class="space-y-6" method="post" action="{{ route('login') }}">
                         @csrf
                         @if ($errors->any())
                         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
