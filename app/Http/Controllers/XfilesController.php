@@ -20,14 +20,11 @@ class XFilesController extends Controller
     {
         $request->validate([
             'file' => 'required|file|mimes:txt', //Get txt file
-            'key' => 'required|string',
         ]);
 
         $file = $request->file('file');
-        $key = $request->input('key');
-        $encryptionKey = base64_decode($key); //Decode the key 
-
-        // dd($encryptionKey.'////'.$key);
+        $encryptionKey = config('app.encryption_key');
+        //dd($encryptionKey);
 
         try {
             $encryptedData = file_get_contents($file->getRealPath()); // Read data from the file
@@ -37,7 +34,7 @@ class XFilesController extends Controller
             list($encryptedData, $iv, $tag) = explode('::', base64_decode($encryptedData), 3);
             $decryptedData = openssl_decrypt($encryptedData, 'aes-256-gcm', $encryptionKey, 0, $iv, $tag);
 
-            //dd($encryptedData.'    '.$iv.'    '.$tag);
+            //dd($encryptedData.'    '.$iv.'    '.$tag.'    '.$encryptionKey);
             //dd($decryptedData);
 
             if ($decryptedData === false) {
@@ -66,10 +63,10 @@ class XFilesController extends Controller
     {
         $validatedData = $request->validate([
             'message' => 'required',
-            'key' => 'required',
         ]);
 
-        $encryptedData = $this->encryptMessage($validatedData['message'], $validatedData['key']);
+        $encryptionKey = config('app.encryption_key');
+        $encryptedData = $this->encryptMessage($validatedData['message'], $encryptionKey);
 
         return back()->with('encryptedData', $encryptedData);
     }

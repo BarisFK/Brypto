@@ -22,8 +22,9 @@
 
         <div>
             <label for="key" class="block text-sm font-medium text-gray-700">Encryption Key (Base64):</label>
-            <input type="text" name="key" id="key" value="{{ old('key') }}" placeholder="Enter base64 encoded key"
-                class="w-full p-2 border rounded-md">
+            <input type="text" name="key" id="key" value="{{ old('key') }}" placeholder="Base64 encoded key from .env"
+                class="readonly w-full p-2 border rounded-md bg-gray-100 cursor-not-allowed" disabled>
+
         </div>
 
         <button type="submit" name="submit"
@@ -44,7 +45,8 @@
                 <label for="vault_title" class="block text-sm font-medium text-gray-700">Vault Title:</label>
                 <input type="text" name="vault_title" id="vault_title" class="w-full p-2 border rounded-md">
             </div>
-            <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save to
+            <button type="submit" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Save
+                to
                 Vault</button>
         </form>
     </div>
@@ -53,16 +55,16 @@
 @endsection
 
 @section('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            @if (session('success'))
-                Swal.fire({
-                    title: 'Success!',
-                    text: '{{ session('success') }}',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                });
-            @endif
-        });
-    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        @if (session('success'))
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        @endif
+    });
+</script>
 @endsection

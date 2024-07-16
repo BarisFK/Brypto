@@ -22,8 +22,8 @@
 
         <div>
             <label for="key" class="block text-sm font-medium text-gray-700">Decryption Key (Base64):</label>
-            <input type="text" name="key" id="key" value="{{ old('key') }}" placeholder="Enter base64 encoded key"
-                class="w-full p-2 border rounded-md">
+            <input type="text" name="key" id="key" value="{{ old('key') }}" placeholder="Base64 encoded key from .env"
+                class="readonly w-full p-2 border rounded-md bg-gray-100 cursor-not-allowed" disabled>
         </div>
 
         <button type="submit" name="submit"

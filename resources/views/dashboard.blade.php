@@ -41,7 +41,6 @@
         <div>
             <h2 class="text-xl font-semibold mb-2">Data Security</h2>
             <p class="text-lg">Encryption Status: {{ $encryptionStatus }}</p>
-            {{-- Add other relevant security or app-specific statistics here --}}
         </div>
         <div class="mt-4">
             <span class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded-full">Details</span>

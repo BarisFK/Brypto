@@ -30,8 +30,12 @@
                 </button>
             </div>
 
-            <i class="bi bi-bank"></i>
-
+            <div class="flex items-center">
+                <i class="bi bi-bank"></i>
+                <span class="font-mono text-lg tracking-widest ml-3" id="card-number-{{ $card->id }}">
+                    {{$card->title}}
+                </span>
+            </div>
             <div class="flex items-center w-full">
                 <div class="flex items-center">
                     <span class="font-mono text-lg tracking-widest" id="card-number-{{ $card->id }}">
@@ -115,14 +119,14 @@
                 if (result.isConfirmed) {// Submit the delete form
                     document.getElementById(`delete-form-${cardId}`).submit();
                     Swal.fire({
-                    toast: true,
-                    position: 'bottom-start',
-                    icon: 'success',
-                    title: 'Card deleted!',
-                    showConfirmButton: false,
-                    timer: 4000,
-                    timerProgressBar: true,
-                });
+                        toast: true,
+                        position: 'bottom-start',
+                        icon: 'success',
+                        title: 'Card deleted!',
+                        showConfirmButton: false,
+                        timer: 4000,
+                        timerProgressBar: true,
+                    });
                 }
             });
         }

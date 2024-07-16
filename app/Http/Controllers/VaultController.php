@@ -42,15 +42,15 @@ class VaultController extends Controller
         $item = Vault::find($request->input('itemId'));
         $encryptedData = $item->encrypted_data;
         $key = $request->input('key');
-        $encryptionKey = base64_decode($key);
-
-        //dd($encryptedData,$key,$encryptionKey);
+        //dd($encryptedData,$key);
 
         try {
             list($encryptedData, $iv, $tag) = explode('::', base64_decode($encryptedData), 3);
-            $decryptedData = openssl_decrypt($encryptedData, 'aes-256-gcm', $encryptionKey, 0, $iv, $tag);
+            
+        dd($encryptedData.'    '.$iv.'    '.$tag.'    '.$key);
+            $decryptedData = openssl_decrypt($encryptedData, 'aes-256-gcm', $key, 0, $iv, $tag);
 
-         //dd($decryptedData);
+        //dd($decryptedData);
             if (!$encryptedData || !$iv || !$tag) {
                 return back()->with('decryptionError', 'Invalid data format')->withInput();
             }
