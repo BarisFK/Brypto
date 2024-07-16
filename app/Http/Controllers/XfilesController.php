@@ -60,26 +60,20 @@ class XFilesController extends Controller
     }
 
     public function encryption(Request $request)
-    {
-        $validatedData = $request->validate([
-            'message' => 'required',
-        ]);
+{
+    $validatedData = $request->validate([
+        'message' => 'required',
+    ]);
 
-        $encryptionKey = config('app.encryption_key');
-        $encryptedData = $this->encryptMessage($validatedData['message'], $encryptionKey);
+    $encryptionKey = config('app.encryption_key');
+    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-gcm'));
+    $tag = null;
 
-        return back()->with('encryptedData', $encryptedData);
-    }
+    $ciphertext = openssl_encrypt($validatedData['message'], 'aes-256-gcm', $encryptionKey, 0, $iv, $tag);
+    $encryptedData = base64_encode($ciphertext . '::' . $iv . '::' . $tag);
 
-    public function encryptMessage($message, $key)
-    {
-        $encryptionKey = base64_decode($key);
-        $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-gcm'));
-        $tag = null;
+    return back()->with('encryptedData', $encryptedData);
+}
 
-        $ciphertext = openssl_encrypt($message, 'aes-256-gcm', $encryptionKey, 0, $iv, $tag);
-
-        return base64_encode($ciphertext . '::' . $iv . '::' . $tag);
-    }
 
 }

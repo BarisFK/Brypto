@@ -41,13 +41,13 @@ class VaultController extends Controller
 
         $item = Vault::find($request->input('itemId'));
         $encryptedData = $item->encrypted_data;
-        $key = $request->input('key');
+        $key = config('app.encryption_key');
         //dd($encryptedData,$key);
 
         try {
             list($encryptedData, $iv, $tag) = explode('::', base64_decode($encryptedData), 3);
             
-        dd($encryptedData.'    '.$iv.'    '.$tag.'    '.$key);
+        //dd($encryptedData.'    '.$iv.'    '.$tag.'    '.$key);
             $decryptedData = openssl_decrypt($encryptedData, 'aes-256-gcm', $key, 0, $iv, $tag);
 
         //dd($decryptedData);
