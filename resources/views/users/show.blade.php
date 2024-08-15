@@ -1,38 +1,37 @@
 @extends('layouts.app')
  
-@section('title', 'Show Product')
+@section('title', 'User Details')
  
 @section('contents')
-<h1 class="font-bold text-2xl ml-3">User Detail</h1>
-<hr />
-<div class="border-b border-gray-900/10 pb-12">
-    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-        <div class="sm:col-span-4">
-            <label class="block text-sm font-medium leading-6 text-gray-900">name</label>
-            <div class="mt-2">
+<div class="max-w-4xl bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-b border-gray-200 dark:border-gray-700">
+    <div class="space-y-6">
+        <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+            <div class="mt-1 text-lg font-medium text-gray-900 dark:text-white">
                 {{ $user->name }}
             </div>
         </div>
  
-        <div class="sm:col-span-4">
-            <label class="block text-sm font-medium leading-6 text-gray-900">Email</label>
-            <div class="mt-2">
+        <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+            <div class="mt-1 text-lg font-medium text-gray-900 dark:text-white">
                 {{ $user->email }}
             </div>
         </div>
-        <div class="sm:col-span-4">
-            <label class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-            <div class="mt-2">
+        
+        <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+            <div class="mt-1 text-lg font-medium text-gray-900 dark:text-white">
                 {{ $user->password }}
             </div>
         </div>
-        <div class="sm:col-span-4">
-            <label class="block text-sm font-medium leading-6 text-gray-900">Type</label>
-            <div class="mt-2">
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Type</label>
+            <div class="mt-1 text-lg font-medium text-gray-900 dark:text-white">
                 {{ $user->type }}
             </div>
         </div>
-        </form>
     </div>
 </div>
 @endsection

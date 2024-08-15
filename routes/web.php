@@ -54,10 +54,10 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/users/store', [AdminController::class, 'store'])->name('users.store');
 
     //Users 
-    Route::get('/admin/users/show/{id}', [AdminController::class, 'show'])->name('admin/products/show');
-    Route::get('/admin/users/edit/{id}', [AdminController::class, 'edit'])->name('admin/products/edit');
+    Route::get('/admin/users/show/{id}', [AdminController::class, 'show'])->name('admin/users/show');
+    Route::get('/admin/users/edit/{id}', [AdminController::class, 'edit'])->name('admin/users/edit');
     Route::put('/admin/users/update/{id}', [AdminController::class, 'update'])->name('admin.update');
-    Route::delete('/admin/users/destroy/{id}', [AdminController::class, 'destroy'])->name('admin/products/destroy');
+    Route::delete('/admin/users/remove/{id}', [AdminController::class, 'remove'])->name('admin/users/remove');
 
 
     // X-files 
