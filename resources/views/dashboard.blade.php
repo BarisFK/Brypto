@@ -37,7 +37,7 @@
     </a>
 
     {{-- Data Security --}}
-    <a href="{{ route('encryptPage') }}" class="bg-purple-500 hover:bg-purple-700 text-white p-6 rounded-lg flex flex-col justify-between h-48 transition duration-300 ease-in-out transform hover:scale-105">
+    <a href="{{ route('encryptPage') }}" class="bg-yellow-400 hover:bg-yellow-600 text-white p-6 rounded-lg flex flex-col justify-between h-48 transition duration-300 ease-in-out transform hover:scale-105">
         <div>
             <h2 class="text-xl font-semibold mb-2">Data Security</h2>
             <p class="text-lg">Encryption Status: {{ $encryptionStatus }}</p>

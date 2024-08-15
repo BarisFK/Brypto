@@ -16,9 +16,9 @@
 <div class="grid grid-cols-3 gap-4">
     @foreach ($cards as $card)
         <div
-            class="bg-gradient-to-r from-green-400 to-green-800 hover:from-green-400 hover:to-green-600 text-white p-4 rounded-lg shadow-lg flex flex-col items-start justify-between h-48 w-96 relative">
+            class="bg-gradient-to-r from-green-500 to-green-800 hover:from-green-400 hover:to-green-600 text-white p-4 rounded-lg shadow-lg flex flex-col items-start justify-between h-48 w-96 relative">
 
-            <div class="absolute top-2 right-2 flex space-x-2"> {{-- Icons container --}}
+            <div class="absolute top-2 right-2 flex space-x-2"> 
                 <button class="text-white hover:text-gray-300 focus:outline-none"
                     onclick="toggleCardNumber('{{ $card->id }}')">
                     <i class="bi bi-eye"></i>
@@ -116,7 +116,7 @@
                 cancelButtonColor: '#3085d6',
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
-                if (result.isConfirmed) {// Submit the delete form
+                if (result.isConfirmed) {
                     document.getElementById(`delete-form-${cardId}`).submit();
                     Swal.fire({
                         toast: true,
@@ -133,7 +133,7 @@
     </script>
 
 
-    <div class="bg-green-500 hover:bg-green-400 text-white p-6 rounded-lg flex items-center justify-center text-5xl font-semibold h-48 w-96 cursor-pointer"
+    <div class="bg-green-600 hover:bg-green-500 text-white p-6 rounded-lg flex items-center justify-center text-5xl font-semibold h-48 w-96 cursor-pointer"
         data-modal-target="cardModal">
         +
     </div>

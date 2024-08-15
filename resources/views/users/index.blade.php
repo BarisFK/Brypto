@@ -25,17 +25,17 @@
             </thead>
             <tbody>
                 @if($user->count() > 0)
-                @foreach($user as $rs)
-                <tr class="border-b dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
+                @foreach($user as $usr)
+                <tr class="text-slate-200 border-b dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                     <td class="px-6 py-4 text-gray-900 dark:text-white">{{ $loop->iteration }}</td>
-                    <td class="px-6 py-4">{{ $rs->name }}</td>
-                    <td class="px-6 py-4">{{ $rs->email }}</td>
-                    <td class="px-6 py-4">{{ $rs->password }}</td>
-                    <td class="px-6 py-4">{{ $rs->type }}</td>
+                    <td class="px-6 py-4">{{ $usr->name }}</td>
+                    <td class="px-6 py-4">{{ $usr->email }}</td>
+                    <td class="px-6 py-4">{{ "***" }}</td>
+                    <td class="px-6 py-4">{{ $usr->type }}</td>
                     <td class="px-6 py-4 flex space-x-2">
-                        <a href="{{ route('admin/users/show', $rs->id) }}" class="text-blue-600 dark:text-blue-400 hover:underline">Detail</a>
-                        <a href="{{ route('admin/users/edit', $rs->id)}}" class="text-green-600 dark:text-green-400 hover:underline">Edit</a>
-                        <form action="{{ route('admin/users/remove', $rs->id) }}" method="POST" onsubmit="return confirm('Delete?')" class="inline">
+                        <a href="{{ route('admin/users/show', $usr->id) }}" class="text-blue-600 dark:text-blue-400 hover:underline">Detail</a>
+                        <a href="{{ route('admin/users/edit', $usr->id)}}" class="text-green-600 dark:text-green-400 hover:underline">Edit</a>
+                        <form action="{{ route('admin/users/remove', $usr->id) }}" method="POST" onsubmit="return confirm('Delete?')" class="inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-600 dark:text-red-400 hover:underline">Delete</button>

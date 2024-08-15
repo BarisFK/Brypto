@@ -8,160 +8,134 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>@yield('title')</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
     
 </head>
 
-<body>
-    <header class="px-4 py-2 shadow-md">
-        <div class="flex justify-between">
-            <div class="flex items-center">
-                <div class="text-green-500 font-bold text-2xl md:text-3xl flex items-center">
-                    <div class="flex items-center justify-center bg-green-500 rounded-md"> 
-                        <i class="bi bi-shield-lock text-white px-2 py-1"></i>
-                    </div>
-                    <span class="ml-2">Brypto</span> 
-                 </div>
-                <button data-search class="p-4 md:hidden focus:outline-none" type="button"></button>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <header class="bg-gray-800 text-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center w-56">
+            <div class="w-full flex items-center justify-center">
+                <div class="text-green-400 font-bold text-2xl flex items-center">
+                    <i class="bi bi-shield-lock text-3xl"></i>
+                    <span class="ml-2">Brypto</span>
+                </div>
             </div>
-            <div class="flex items-center">
-
-<div class="relative inline-block text-left mr-2" x-data="{ open: false }">
-    <div>
-        <button @click="open = !open" type="button" class="p-3 focus:outline-none hover:bg-gray-200 hover:rounded-md">
-            <i class="bi bi-envelope-fill text-2xl"></i>
+        </div>
+        <button data-search class="p-3 md:hidden focus:outline-none text-white hover:bg-green-700 rounded-md" type="button">
+            <i class="bi bi-search text-xl"></i>
         </button>
-    </div>
-    
-    <div x-show="open" @click.away="open = false" class="origin-top-right absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-        <div class="py-1" role="none">
-            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Message 1</a>
-            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Message 2</a>
-        </div>
-    </div>
-</div>
-
-<div class="relative inline-block text-left mr-3" x-data="{ open: false }">
-    <div>
-        <button @click="open = !open" type="button" class="p-3 focus:outline-none hover:bg-gray-200 hover:rounded-md">
-            <i class="bi bi-bell-fill text-2xl"></i>
-        </button>
-    </div>
-
-    <div x-show="open" @click.away="open = false" class="origin-top-right absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-        <div class="py-1" role="none">
-            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Notification 1</a>
-            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Notification 2</a>
-        </div>
-    </div>
-</div>
-
-<button data-dropdown class="flex items-center px-3 py-2 focus:outline-none hover:bg-gray-200 hover:rounded-md relative" type="button" x-data="{ open: false }" @click="open = true" :class="{ 'bg-gray-200 rounded-md': open }">
-    <i class="bi bi-person-circle text-3xl"></i> 
-    
-    <div data-dropdown-items class="z-10 text-base text-left absolute top-0 right-0 mt-16 w-48 bg-white rounded-lg shadow-md overflow-hidden" x-show="open" @click.away="open = false">
-        <div class="flex flex-col items-center py-4"> 
-            <i class="bi bi-person-circle text-6xl mb-2"></i> 
-            <span class="text-lg font-semibold">{{ auth()->user()->name }}</span> 
-            <span class="text-sm text-gray-500 mt-1 mb-2">{{ auth()->user()->email }}</span>
-            <a href="{{ route('admin/profile') }}" class="mt-2 mb-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-            View Profile
-            </a>
-        </div>
-    </div>
-</button>
-
-</div>
-
+            <div class="flex items-center space-x-3">
+                <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" type="button" class="p-3 text-white hover:bg-green-700 rounded-md">
+                        <i class="bi bi-envelope-fill text-xl"></i>
+                    </button>
+                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-64 bg-white text-gray-800 rounded-md shadow-lg z-10">
+                        <div class="py-1">
+                            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Message 1</a>
+                            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Message 2</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" type="button" class="p-3 text-white hover:bg-green-700 rounded-md">
+                        <i class="bi bi-bell-fill text-xl"></i>
+                    </button>
+                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-64 bg-white text-gray-800 rounded-md shadow-lg z-10">
+                        <div class="py-1">
+                            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Notification 1</a>
+                            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Notification 2</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="flex items-center p-3 text-white hover:bg-green-700 rounded-md relative" x-data="{ open: false }" @click="open = !open">
+                    <i class="bi bi-person-circle text-2xl"></i>
+                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-72 w-48 bg-white text-gray-800 rounded-lg shadow-md z-10">
+                        <div class="flex flex-col items-center py-4">
+                            <i class="bi bi-person-circle text-4xl mb-2"></i>
+                            <span class="text-lg font-semibold">{{ auth()->user()->name }}</span>
+                            <span class="text-sm text-gray-500 mt-1">{{ auth()->user()->email }}</span>
+                            <a href="{{ route('admin/profile') }}" class="mt-2 mb-2 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                View Profile
+                            </a>
+                        </div>
+                    </div>
+                </button>
+            </div>
         </div>
     </header>
- 
-    <div class="flex flex-row">
-        <div class="flex flex-col w-64 h-screen overflow-y-auto bg-gray-800 border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 rounded-r-md">
-            <div class="sidebar text-center bg-gray-800">
-                <div class="text-gray-100 text-xl text-center">
-                 <div class="p-2.5 mt-1 flex items-center justify-center"> 
-                  <h1 class="text-gray-300 text-[12px]">Welcome {{ auth()->user()->name }}!</h1>
-                </div>
+
+    <div class="flex">
+        <aside class="w-64 bg-gray-800 text-gray-100 h-screen overflow-y-auto">
+            <div class="p-4">
+                <h1 class="text-gray-400 text-md text-center">Welcome {{ auth()->user()->name }}!</h1>
             </div>
-                <div class="p-2.5 my-4 mx-1.5 flex items-center rounded-md px-15 duration-300 cursor-pointer bg-gray-700 text-white">
-                <i class="bi bi-search text-sm"></i>
-                <input type="text" placeholder="Search" class="text-[15px] ml-4 w-full bg-transparent focus:outline-none placeholder-gray-300" />
+            <div class="px-4">
+                <div class="flex items-center bg-gray-700 rounded-md p-2 mb-4">
+                    <i class="bi bi-search text-gray-400"></i>
+                    <input type="text" placeholder="Search" class="ml-2 bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none">
                 </div>
                 <a href="{{ route('dashboard') }}">
-                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white">
+                    <div class="flex items-center p-2 mb-2 text-white bg-gray-700 hover:bg-green-600 rounded-md cursor-pointer">
                         <i class="bi bi-house-door-fill"></i>
-                        <span class="text-[15px] ml-4 text-gray-200 font-bold">Dashboard</span>
+                        <span class="ml-4">Dashboard</span>
                     </div>
                 </a>
-               
                 @if (auth()->check())
                 @if (auth()->user()->type === 'admin')
                 <a href="{{ route('users.index') }}">
-                <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white">
-                    <i class="bi bi-people"></i>
-                    <span class="text-[15px] ml-4 text-gray-200 font-bold">Users</span>
-                </div>
+                    <div class="flex items-center p-2 mb-2 text-white bg-gray-700 hover:bg-green-600 rounded-md cursor-pointer">
+                        <i class="bi bi-people"></i>
+                        <span class="ml-4">Users</span>
+                    </div>
                 </a>
-
                 <a href="{{ route('passPage') }}">
-                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white">
+                    <div class="flex items-center p-2 mb-2 text-white bg-gray-700 hover:bg-green-600 rounded-md cursor-pointer">
                         <i class="bi bi-file-lock"></i>
-                        <span class="text-[15px] ml-4 text-gray-200 font-bold">Passwords</span>
+                        <span class="ml-4">Passwords</span>
                     </div>
                 </a>
                 <a href="{{ route('cardsPage') }}">
-                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white">
+                    <div class="flex items-center p-2 mb-2 text-white bg-gray-700 hover:bg-green-600 rounded-md cursor-pointer">
                         <i class="bi bi-credit-card-2-front"></i>
-                        <span class="text-[15px] ml-4 text-gray-200 font-bold">Cards</span>
+                        <span class="ml-4">Cards</span>
                     </div>
                 </a>
-               
-                <div x-data="{ isOpen: false }"> 
-                <button @click="isOpen = !isOpen" class="p-2.5 mt-3 flex items-center justify-between rounded-md px-4 duration-300 cursor-pointer hover:bg-green-500 text-white w-full">
-                    <div class="flex items-center">
-                        <i class="bi bi-journal-x"></i>
-                        <span class="text-[15px] ml-4 text-gray-200 font-bold">X-Files</span>
+                <div x-data="{ isOpen: false }">
+                    <button @click="isOpen = !isOpen" class="flex items-center justify-between p-2 mb-2 text-white bg-gray-700 hover:bg-green-600 rounded-md cursor-pointer w-full">
+                        <div class="flex items-center">
+                            <i class="bi bi-journal-x"></i>
+                            <span class="ml-4">X-Files</span>
+                        </div>
+                        <i :class="{'bi bi-chevron-down': !isOpen, 'bi bi-chevron-up': isOpen}" class="text-sm"></i>
+                    </button>
+                    <div x-show="isOpen" class="bg-gray-600">
+                        <a href="{{ route('encryptPage') }}" class="block px-4 py-2 text-gray-100 hover:bg-green-500">Encryption</a>
+                        <a href="{{ route('decryptPage') }}" class="block px-4 py-2 text-gray-100 hover:bg-green-500">Decryption</a>
+                        <a href="{{ route('vaultPage') }}" class="block px-4 py-2 text-gray-100 hover:bg-green-500">Vault</a>
                     </div>
-                    <i :class="{'bi bi-chevron-down': !isOpen, 'bi bi-chevron-up': isOpen}" class="text-sm"></i> 
-                </button>
-            
-                <div x-show="isOpen" class="mt-2 space-y-2 bg-gray-700">
-    <a href="{{ route('encryptPage') }}" class="block text-gray-200 hover:bg-green-600 hover:text-white ml-5 p-2 rounded-lg flex items-center"> 
-        <i class="bi bi-lock mr-2"></i>  
-        Encryption
-    </a>
-    <a href="{{ route('decryptPage') }}" class="block text-gray-200 hover:bg-green-600 hover:text-white ml-5 p-2 rounded-lg flex items-center">
-        <i class="bi bi-key mr-2"></i>   
-        Decryption
-    </a>
-    <a href="{{ route('vaultPage') }}" class="block text-gray-200 hover:bg-green-600 hover:text-white ml-5 p-2 rounded-lg flex items-center">
-        <i class="bi bi-safe mr-2"></i>   
-        Vault
-    </a>
-</div>
-
-            </div>
-
-        @endif
-    @endif
+                </div>
+                @endif
+                @endif
                 <a href="{{ route('logout') }}">
-                    <div class="my-4 bg-gray-600 h-[1px]"></div>
-                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-red-500 text-white">
+                    <div class="my-4 border-t border-gray-600"></div>
+                    <div class="flex items-center p-2 text-white bg-gray-700 hover:bg-red-600 rounded-md cursor-pointer">
                         <i class="bi bi-box-arrow-in-right"></i>
-                        <span class="text-[15px] ml-4 text-gray-200 font-bold">Logout</span>
+                        <span class="ml-4">Logout</span>
                     </div>
                 </a>
             </div>
-        </div>
-        <div class="flex flex-col w-full h-screen px-4 py-8">
-        <h1 class="mb-10 font-bold text-2xl ">@yield('title')</h1>
-        <div>@yield('contents')</div>
-        </div>
+        </aside>
+        <main class="flex-1 p-6">
+            <h1 class="text-2xl font-bold mb-6">@yield('title')</h1>
+            <div>@yield('contents')</div>
+        </main>
     </div>
 </body>
- 
+
 </html>
