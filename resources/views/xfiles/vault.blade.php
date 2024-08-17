@@ -26,7 +26,7 @@
 
     {{-- Search Bar --}}
     <div class="flex justify-end items-center space-x-4 mb-4 mt-2">
-        <div class="p-2.5 flex items-center rounded-md px-15 duration-300 cursor-pointer bg-gray-700 text-white">
+        <div class="p-2.5 flex items-center rounded-md px-15 duration-300 cursor-pointer bg-gray-800 text-white">
             <i class="bi bi-search text-sm"></i>
             <input type="text" id="searchInput" placeholder="Search"
                 class="text-[15px] ml-4 w-full bg-transparent focus:outline-none placeholder-gray-300" />
@@ -36,7 +36,7 @@
     {{-- Vault Items --}}
     <div id="vaultItems" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
         @foreach($vaultItems as $item)
-            <div class="vault-item bg-green-500 hover:bg-green-700 rounded-lg shadow-lg overflow-hidden relative h-60">  
+            <div class="vault-item bg-green-700 hover:bg-green-500 rounded-lg shadow-lg overflow-hidden relative h-60">  
                 <h2 class="text-white text-2xl font-semibold mb-2 p-4">{{ $item->title }}</h2>
                 <div x-data="{ open: false, deleteMode: false }">
                     <button class="absolute top-4 right-4 text-white hover:text-green-200 focus:outline-none text-2xl"

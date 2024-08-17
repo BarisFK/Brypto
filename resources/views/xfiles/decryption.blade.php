@@ -16,14 +16,14 @@
     @csrf
     <div class="flex flex-col space-y-4">
         <div class="file-upload-area p-4 border-2 border-dashed border-gray-300 rounded-md">
-            <label for="file" class="block text-sm font-medium text-gray-700">Choose a file to upload (.txt)</label>
-            <input type="file" name="file" id="file" class="mt-1" accept=".txt">
+            <label for="file" class="block text-sm font-medium text-white m-2">Choose a file to upload (.txt)</label>
+            <input type="file" name="file" id="file" class="m-2 text-gray-300" accept=".txt">
         </div>
 
         <div>
             <label for="key" class="block text-sm font-medium text-gray-700">Decryption Key (Base64):</label>
             <input type="text" name="key" id="key" value="{{ old('key') }}" placeholder="Base64 encoded key from .env"
-                class="readonly w-full p-2 border rounded-md bg-gray-100 cursor-not-allowed" disabled>
+                class="readonly w-full p-2 border rounded-md bg-gray-100 cursor-not-allowed bg-gray-300" disabled>
         </div>
 
         <button type="submit" name="submit"

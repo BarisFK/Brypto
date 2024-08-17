@@ -97,7 +97,6 @@ class AdminController extends Controller
         }
 
         $validatedData = $request->validate([
-            'type' => ['required', Rule::in(['user', 'admin'])],
             'oldpass' => ['required'],
             'password' => ['required', 'confirmed', 'min:1'],
             'password_confirmation' => ['required'],

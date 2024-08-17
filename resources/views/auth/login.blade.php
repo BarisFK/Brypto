@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Login</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>
     <style>
         .card {
@@ -52,16 +52,16 @@
 </head>
 
 <body>
-    <section class="bg-green-50 dark:bg-green-900">
+    <section class="bg-gray-900 dark:bg-gray-900">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <div class="flex items-center mb-6 text-4xl font-bold text-white">
                 <span class="bg-gradient-to-r from-green-400 to-green-600 text-transparent bg-clip-text">
                     Welcome Back!
                 </span>
             </div>
-            <div class="w-full bg-white rounded-lg shadow-lg dark:border sm:max-w-md xl:p-0 dark:bg-green-800 dark:border-green-700 card">
+            <div class="w-full bg-gray-800 rounded-lg shadow-lg dark:border sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-green-700 card">
                 <div class="p-6 space-y-6 md:space-y-8 sm:p-8">
-                    <h1 class="text-2xl font-extrabold leading-tight tracking-tight text-green-900 md:text-3xl dark:text-white text-center">
+                    <h1 class="text-2xl font-extrabold leading-tight tracking-tight text-green-200 md:text-3xl dark:text-green-200 text-center">
                         Login to your account
                     </h1>
                     <form class="space-y-6" method="post" action="{{ route('loginA') }}">
@@ -72,27 +72,27 @@
                         </div>
                         @endif
                         <div>
-                            <label for="email" class="block mb-2 text-sm font-medium text-green-700 dark:text-green-300">Email</label>
-                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="name@company.com" required>
+                            <label for="email" class="block mb-2 text-sm font-medium text-green-400 dark:text-green-400">Email</label>
+                            <input type="email" name="email" id="email" class="bg-gray-700 border border-gray-600 text-gray-100 sm:text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="name@company.com" required>
                         </div>
                         <div>
-                            <label for="password" class="block mb-2 text-sm font-medium text-green-700 dark:text-green-300">Password</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" required>
+                            <label for="password" class="block mb-2 text-sm font-medium text-green-400 dark:text-green-400">Password</label>
+                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-700 border border-gray-600 text-gray-100 sm:text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" required>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
-                                    <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-green-200 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-green-600 dark:ring-offset-gray-800">
+                                    <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-700 focus:ring-3 focus:ring-green-200 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-green-600 dark:ring-offset-gray-800">
                                 </div>
                                 <div class="ml-3 text-sm">
-                                    <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
+                                    <label for="remember" class="text-gray-400 dark:text-gray-400">Remember me</label>
                                 </div>
                             </div>
-                            <a href="#" class="text-sm font-medium text-green-600 hover:underline dark:text-green-500">Forgot password?</a>
+                            <a href="#" class="text-sm font-medium text-green-500 hover:underline dark:text-green-500">Forgot password?</a>
                         </div>
                         <button type="submit" class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 btn-animated">Login</button>
-                        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                            Don’t have an account yet? <a href="{{ route('register') }}" class="font-medium text-green-600 hover:underline dark:text-green-500">Register</a>
+                        <p class="text-sm font-light text-gray-400 dark:text-gray-400">
+                            Don’t have an account yet? <a href="{{ route('register') }}" class="font-medium text-green-500 hover:underline dark:text-green-500">Register</a>
                         </p>
                     </form>
                 </div>

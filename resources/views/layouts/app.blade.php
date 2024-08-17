@@ -16,7 +16,9 @@
     
 </head>
 
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<body class="bg-gray-800 font-sans leading-normal tracking-normal">
+   
+    {{-- Top --}}
     <header class="bg-gray-800 text-white shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <div class="flex items-center w-56">
@@ -70,6 +72,7 @@
         </div>
     </header>
 
+    {{-- Side --}}
     <div class="flex">
         <aside class="w-64 bg-gray-800 text-gray-100 h-screen overflow-y-auto">
             <div class="p-4">
@@ -131,8 +134,10 @@
                 </a>
             </div>
         </aside>
-        <main class="flex-1 p-6">
-            <h1 class="text-2xl font-bold mb-6">@yield('title')</h1>
+
+        {{-- Content --}}
+        <main class="flex-1 p-6 bg-gray-700 rounded-lg">
+            <h1 class="text-2xl font-bold mb-6 text-gray-200 border-b-2 border-gray-500 pb-2 flex justify-center">@yield('title')</h1>
             <div>@yield('contents')</div>
         </main>
     </div>

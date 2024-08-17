@@ -19,9 +19,9 @@
     </div>
 
     @foreach ($passwords as $password)
-        <div class="password-item bg-gray-800 hover:bg-gray-600 rounded-lg shadow-lg overflow-hidden mb-4 relative">
+        <div class="password-item bg-gray-800 hover:bg-gray-600 rounded-lg shadow-lg overflow-hidden mb-4 relative ">
             <div class="flex flex-col md:flex-row md:items-center p-4">
-                <div class="title bg-green-600 text-white py-2 px-4 rounded-md font-semibold w-48 md:mr-4">
+                <div class="title bg-green-500 text-white py-2 px-4 rounded-md font-semibold w-48 md:mr-4 bg-opacity-75	">
                     {{ $password->title }}
                 </div>
                 <div class="details flex-grow">
@@ -62,9 +62,9 @@
         <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" onclick="closeModal()"></div>
 
         <div
-            class="inline-block align-bottom bg-white rounded-lg px-8 py-6 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            class="inline-block align-bottom bg-gray-800 rounded-lg px-8 py-6 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-2xl font-semibold text-gray-800">Add New Password</h2>
+                <h2 class="text-2xl font-semibold text-white">Add New Password</h2>
                 <button type="button" class="text-gray-500 hover:text-gray-700" onclick="closeModal()">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -78,9 +78,9 @@
 
                 @foreach (['title' => 'Title', 'username' => 'Username', 'password' => 'Password', 'website' => 'Website', 'desc' => 'Description',] as $field => $label)
                     <div class="mb-4">
-                        <label for="{{ $field }}" class="block text-sm font-medium text-gray-700">{{ $label }}</label>
+                        <label for="{{ $field }}" class="block text-sm font-medium text-white">{{ $label }}</label>
                         <input type="{{ ($field == 'password') ? 'password' : 'text' }}" id="{{ $field }}"
-                            name="{{ $field }}" class="mt-1 p-2 border rounded-md w-full" required>
+                            name="{{ $field }}" class="mt-1 p-2 rounded-md w-full bg-gray-500 text-white" required>
                     </div>
                 @endforeach
 

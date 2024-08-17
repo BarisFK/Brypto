@@ -133,19 +133,19 @@
     </script>
 
 
-    <div class="bg-green-600 hover:bg-green-500 text-white p-6 rounded-lg flex items-center justify-center text-5xl font-semibold h-48 w-96 cursor-pointer"
+    <div class="bg-green-700 hover:bg-green-500 text-white p-6 rounded-lg flex items-center justify-center text-5xl font-semibold h-48 w-96 cursor-pointer"
         data-modal-target="cardModal">
         +
     </div>
 
     <div id="cardModal" class="fixed z-50 inset-0 overflow-y-auto hidden">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onclick="closeModal()"></div>
+            <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" onclick="closeModal()"></div>
 
             <div
-                class="inline-block align-bottom bg-white rounded-lg px-6 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                class="inline-block align-bottom bg-gray-800 rounded-lg px-6 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-semibold">Add New Card</h2>
+                    <h2 class="text-2xl font-semibold text-white">Add New Card</h2>
                     <button type="button" class="text-gray-500 hover:text-gray-700" onclick="closeModal()">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -158,20 +158,20 @@
                     @csrf
 
                     <div class="mb-4">
-                        <label for="cardTitle" class="block text-sm font-medium text-gray-700">Card Title</label>
-                        <input type="text" id="cardTitle" name="title" class="mt-1 p-2 border rounded-md w-full"
+                        <label for="cardTitle" class="block text-sm font-medium text-white">Card Title</label>
+                        <input type="text" id="cardTitle" name="title" class="mt-1 p-2 rounded-md w-full bg-gray-500 text-white"
                             required>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label for="cardOwner" class="block text-sm font-medium text-gray-700">Card Owner</label>
+                            <label for="cardOwner" class="block text-sm font-medium text-white">Card Owner</label>
                             <input type="text" id="cardOwner" name="card_owner"
-                                class="mt-1 p-2 border rounded-md w-full" required>
+                                class="mt-1 p-2 rounded-md w-full bg-gray-500 text-white" required>
                         </div>
                         <div>
-                            <label for="cardNo" class="block text-sm font-medium text-gray-700">Card Number</label>
-                            <input type="text" id="cardNo" name="card_no" class="mt-1 p-2 border rounded-md w-full"
+                            <label for="cardNo" class="block text-sm font-medium text-white">Card Number</label>
+                            <input type="text" id="cardNo" name="card_no" class="mt-1 p-2 rounded-md w-full bg-gray-500 text-white"
                                 inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number"
                                 placeholder="xxxx xxxx xxxx xxxx" required>
                         </div>
@@ -179,21 +179,21 @@
 
                     <div class="grid grid-cols-3 gap-4 mt-4">
                         <div>
-                            <label for="cardCvv" class="block text-sm font-medium text-gray-700">CVV</label>
-                            <input type="text" id="cardCvv" name="card_cvv" class="mt-1 p-2 border rounded-md w-full"
+                            <label for="cardCvv" class="block text-sm font-medium text-white">CVV</label>
+                            <input type="text" id="cardCvv" name="card_cvv" class="mt-1 p-2 rounded-md w-full bg-gray-500 text-white"
                                 inputmode="numeric" pattern="[0-9]{3,4}" autocomplete="cc-csc" required>
                         </div>
                         <div>
-                            <label for="expiryMonth" class="block text-sm font-medium text-gray-700">Expiry
+                            <label for="expiryMonth" class="block text-sm font-medium text-white">Expiry
                                 Month</label>
                             <input type="text" id="expiryMonth" name="expiry_month"
-                                class="mt-1 p-2 border rounded-md w-full" inputmode="numeric" pattern="[0-9]{2}"
+                                class="mt-1 p-2 rounded-md w-full bg-gray-500 text-white" inputmode="numeric" pattern="[0-9]{2}"
                                 placeholder="MM" required>
                         </div>
                         <div>
-                            <label for="expiryYear" class="block text-sm font-medium text-gray-700">Expiry Year</label>
+                            <label for="expiryYear" class="block text-sm font-medium text-white">Expiry Year</label>
                             <input type="text" id="expiryYear" name="expiry_year"
-                                class="mt-1 p-2 border rounded-md w-full" inputmode="numeric" pattern="[0-9]{2,4}"
+                                class="mt-1 p-2 rounded-md w-full bg-gray-500 text-white" inputmode="numeric" pattern="[0-9]{2,4}"
                                 placeholder="YY" required>
                         </div>
                     </div>
