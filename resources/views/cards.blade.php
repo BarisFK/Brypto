@@ -13,10 +13,10 @@
     </div>
 @endif
 
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     @foreach ($cards as $card)
         <div
-            class="bg-gradient-to-r from-green-500 to-green-800 hover:from-green-400 hover:to-green-600 text-white p-4 rounded-lg shadow-lg flex flex-col items-start justify-between h-48 w-96 relative">
+            class="bg-gradient-to-r from-green-500 to-green-800 hover:from-green-400 hover:to-green-600 text-white p-4 rounded-lg shadow-lg flex flex-col items-start justify-between h-48 w-full max-w-sm mx-auto relative">
 
             <div class="absolute top-2 right-2 flex space-x-2"> 
                 <button class="text-white hover:text-gray-300 focus:outline-none"
@@ -68,74 +68,9 @@
             @method('DELETE')
         </form>
     @endforeach
-    <script>
-        function toggleCardNumber(cardId) {
-            const cardNumberSpan = document.getElementById(`card-number-${cardId}`);
-            const copyIcon = document.getElementById(`copy-icon-${cardId}`);
-            const isMasked = cardNumberSpan.textContent.includes('*');
-
-            if (isMasked) {
-                // Show the card number
-                @foreach ($cards as $c)
-                    if ('{{ $c->id }}' === cardId) {
-                        cardNumberSpan.textContent = '{{ $c->card_no }}';
-                    }
-                @endforeach
-                copyIcon.classList.remove('hidden');
-            } else {
-                // Mask the card number
-                @foreach ($cards as $c)
-                    if ('{{ $c->id }}' === cardId) {
-                        cardNumberSpan.textContent = '{{ Str::mask($c->card_no, '*', 4, 12) }}';
-                    }
-                @endforeach
-                copyIcon.classList.add('hidden');
-            }
-        }
-
-        function copyCardNumber(cardNumber) {
-            navigator.clipboard.writeText(cardNumber).then(() => {
-                Swal.fire({
-                    toast: true,
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Card number copied!',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true,
-                });
-            });
-        }
-        function confirmDelete(cardId, deleteUrl) {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById(`delete-form-${cardId}`).submit();
-                    Swal.fire({
-                        toast: true,
-                        position: 'bottom-start',
-                        icon: 'success',
-                        title: 'Card deleted!',
-                        showConfirmButton: false,
-                        timer: 4000,
-                        timerProgressBar: true,
-                    });
-                }
-            });
-        }
-    </script>
-
-
-    <div class="bg-green-700 hover:bg-green-500 text-white p-6 rounded-lg flex items-center justify-center text-5xl font-semibold h-48 w-96 cursor-pointer"
+    <div class="bg-green-700 hover:bg-green-500 text-white p-6 rounded-lg flex items-center justify-center text-xl cursor-pointer w-full max-w-sm mx-auto"
         data-modal-target="cardModal">
-        +
+        + Add New
     </div>
 
     <div id="cardModal" class="fixed z-50 inset-0 overflow-y-auto hidden">
@@ -208,13 +143,67 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <script>
+    function toggleCardNumber(cardId) {
+        const cardNumberSpan = document.getElementById(`card-number-${cardId}`);
+        const copyIcon = document.getElementById(`copy-icon-${cardId}`);
+        const isMasked = cardNumberSpan.textContent.includes('*');
+
+        if (isMasked) {
+            // Show the card number
+            cardNumberSpan.textContent = '{{ $card->card_no }}';
+            copyIcon.classList.remove('hidden');
+        } else {
+            // Mask the card number
+            cardNumberSpan.textContent = '{{ Str::mask($card->card_no, '*', 4, 12) }}';
+            copyIcon.classList.add('hidden');
+        }
+    }
+
+    function copyCardNumber(cardNumber) {
+        navigator.clipboard.writeText(cardNumber).then(() => {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Card number copied!',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+        });
+    }
+
+    function confirmDelete(cardId, deleteUrl) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(`delete-form-${cardId}`).submit();
+                Swal.fire({
+                    toast: true,
+                    position: 'bottom-start',
+                    icon: 'success',
+                    title: 'Card deleted!',
+                    showConfirmButton: false,
+                    timer: 4000,
+                    timerProgressBar: true,
+                });
+            }
+        });
+    }
+
     const modalTrigger = document.querySelector('[data-modal-target="cardModal"]');
     const modal = document.getElementById('cardModal');
-    const modalOverlay = document.querySelector('.fixed.inset-0.bg-gray-500'); // Select the overlay
+    const modalOverlay = document.querySelector('.fixed.inset-0.bg-gray-900'); // Select the overlay
 
     modalTrigger.addEventListener('click', () => {
         modal.classList.remove('hidden');
