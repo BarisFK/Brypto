@@ -24,14 +24,13 @@
 
 Here are some screenshots of the application:
 
-### Encryption Page
-![1](https://github.com/user-attachments/assets/f4f72f10-5f4e-4860-ae59-bb06aca1092b)
-![2](https://github.com/user-attachments/assets/ee15f7dd-326c-47f1-8699-2964cff4f21c)
-![3](https://github.com/user-attachments/assets/5c301688-2ce1-4757-b947-d983e32bab84)
-![4](https://github.com/user-attachments/assets/6a3d11e2-015d-43eb-b3ae-79a8da5a621d)
-![5](https://github.com/user-attachments/assets/6ddc3a20-c3d8-479c-89a3-57390d2f1e83)
-![6](https://github.com/user-attachments/assets/fc0be103-bff3-40f6-a4fc-fdfa57dfbd66)
-![7](https://github.com/user-attachments/assets/7bcad77f-28c0-47b4-8d69-2d35423ab801)
+![Ekran görüntüsü 2024-08-17 175548](https://github.com/user-attachments/assets/90a53b9d-799e-49c9-8fb8-8f8c4627bf01)
+![Ekran görüntüsü 2024-08-17 175849](https://github.com/user-attachments/assets/cceb456e-fa56-45ec-aadb-bbc054ad5245)
+![Ekran görüntüsü 2024-08-18 171755](https://github.com/user-attachments/assets/3fa2aa91-892f-4523-9a8d-a309ea261f05)
+![Ekran görüntüsü 2024-08-18 171842](https://github.com/user-attachments/assets/7b81ad09-c49b-4462-b027-13e4a122b57e)
+![Ekran görüntüsü 2024-08-18 171859](https://github.com/user-attachments/assets/29be930d-4cbb-4b87-b94e-e1f65caddd4c)
+![Ekran görüntüsü 2024-08-18 171937](https://github.com/user-attachments/assets/267c17ad-2f87-47ad-a90a-86ded7642c11)
+
 
 
 ## Installation
