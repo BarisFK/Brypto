@@ -53,7 +53,7 @@
                     <button @click="open = !open" type="button" class="p-3 text-white hover:bg-green-700 rounded-md">
                         <i class="bi bi-envelope-fill text-xl"></i>
                     </button>
-                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-64 bg-white text-gray-800 rounded-md shadow-lg z-10">
+                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-64 bg-gray-300 text-gray-800 rounded-md shadow-lg z-10">
                         <div class="py-1">
                             <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Message 1</a>
                             <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Message 2</a>
@@ -64,7 +64,7 @@
                     <button @click="open = !open" type="button" class="p-3 text-white hover:bg-green-700 rounded-md">
                         <i class="bi bi-bell-fill text-xl"></i>
                     </button>
-                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-64 bg-white text-gray-800 rounded-md shadow-lg z-10">
+                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-64 bg-gray-300 text-gray-800 rounded-md shadow-lg z-10">
                         <div class="py-1">
                             <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Notification 1</a>
                             <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Notification 2</a>
@@ -73,7 +73,7 @@
                 </div>
                 <button class="flex items-center p-3 text-white hover:bg-green-700 rounded-md relative" x-data="{ open: false }" @click="open = !open">
                     <i class="bi bi-person-circle text-2xl"></i>
-                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-64 w-48 bg-white text-gray-800 rounded-lg shadow-md z-10">
+                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-64 w-48 bg-gray-300 text-gray-800 rounded-lg shadow-md z-10">
                         <div class="flex flex-col items-center py-4">
                             <i class="bi bi-person-circle text-4xl mb-2"></i>
                             <span class="text-lg font-semibold">{{ auth()->user()->name }}</span>
@@ -93,7 +93,7 @@
 
     <div class="flex">
         <!-- Sidebar -->
-        <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full' + ' md:translate-x-0' " class="fixed top-16 left-0 w-64 bg-gray-800 text-gray-100 h-[calc(100vh-4rem)] overflow-y-auto transform transition-transform duration-300 z-40 md:relative md:w-64">
+        <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full' + ' md:translate-x-0' " class="fixed md:top-0 sm:top-16 left-0 w-64 bg-gray-800 text-gray-100 h-[calc(100vh-4rem)] overflow-y-auto transform transition-transform duration-300 z-40 md:relative md:w-64">
             <div class="p-4">
                 <h1 class="text-gray-400 text-md text-center">Welcome {{ auth()->user()->name }}!</h1>
             </div>
